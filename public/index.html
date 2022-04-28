@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/bb3368cb9e.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css">
@@ -41,7 +42,7 @@
       </div>
       <br>
       <div>
-          <h2>Your Name</h2>
+          <h2>Nathan Lunn</h2>
       </div>
     </header>
 
@@ -51,16 +52,18 @@
         <h2>Compose Tweet</h2>
         <form action="/tweets" method="POST" class="tweet-form">
           <label for="tweet-text">What are you humming about?</label>
+          <div id="submit-error"></div>
           <textarea name="text" id="tweet-text"></textarea>
-          <div class="confirm">
+          <div class="submit-and-count">
             <button type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
       </section>
       <section class="tweet-list">
-        
       </section>
     </main>
+
+    <div class="to-top"><i class="fa-solid fa-circle-arrow-up"></i></div>
   </body>
 </html>

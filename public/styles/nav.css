@@ -1,23 +1,46 @@
+/* animation for write new tweet icon */
+@keyframes up-down {
+  0% {
+    transform: translateY(-25%);
+  }
+
+  50% {
+    transform: translateY(50%);
+  }
+
+  100% {
+    transform: translateY(-25%);
+  }
+}
+
 nav {
   position: sticky;
   top: 0;
-  bottom: 0;
   width: 100%;
-  height: 120px;
-  background-color: #4056A1;
+  height: 100px;
+  background-color: #A4B4EA;
+  background-image: url("https://www.transparenttextures.com/patterns/blizzard.png");;
   color: white;
-  padding: 40px 1.5em 0px;
+  padding: 25px 1.5em 0px;
   display: flex;
   justify-content: space-between;
 } 
+
+/* logo */
 nav span {
   font-family: 'Bungee', sans-serif;
   font-size: 2em;
+  align-self: flex-end;
 }
 
+/* right side of nav, add new tweet "button" */
 nav i {
   color: red;
+  animation: up-down 2s ease infinite;
 }
 .write {
   text-align: center;
+}
+.write:hover {
+  cursor: pointer;
 }

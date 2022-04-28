@@ -4,66 +4,103 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(document).ready(function() {
+
+  // create the html that will appended to the #tweet-list for each tweet in the database
   const createTweetElement = function(tweet) {
-    const html = `
-    <article class="existing-tweet">
-            <header>
-              <div>
-                <img src="${tweet.user.avatars}">
-                ${tweet.user.name}
-              </div>
-              <div class="user-handle">
-                ${tweet.user.handle}
-              </div>
-            </header>
-            <main>
-              ${tweet.content.text}
-            </main>
-            <footer>
-              <div class="timestamp">${(Math.floor((new Date() - tweet.created_at) / 1000 / 60 / 60 / 24))} days ago</div>
-              <div class="share-icons">
-                <a href=""><i class="fa-solid fa-flag"></i></a>  <a href=""><i class="fa-solid fa-retweet"></i></a>  <a href=""><i class="fa-solid fa-heart"></i></a>
-              </div>
-            </footer>
-          </article>
-    `;
-    return html;
+    let $article = $('<article>').addClass('existing-tweet');
+    let $header = $('<header>');
+    let $nameDiv = $('<div>');
+    let $handleDiv = $('<div>').addClass('user-handle');
+    let $main = $('<main>');
+    let $footer = $('<footer>');
+    let $timeDiv = $('<div>').addClass('timestamp');
+    let $iconDiv = $('<div>').addClass('share-icons');
+
+    $iconDiv.append('<a href=""><i class="fa-solid fa-flag"></i></a>  <a href=""><i class="fa-solid fa-retweet"></i></a>  <a href=""><i class="fa-solid fa-heart"></i></a>');
+    $timeDiv.text(timeago.format(tweet.created_at));
+    $footer.append($timeDiv, $iconDiv);
+
+    $main.text(tweet.content.text);
+
+    $nameDiv.append(`<img src="${tweet.user.avatars}">`, tweet.user.name);
+    $handleDiv.text(tweet.user.handle);
+    $header.append($nameDiv, $handleDiv);
+
+    $article.append($header, $main, $footer);
+
+    return $article;
   };
 
+  // keep track of tweets already added to the page
+  const rendered = [];
+  // creates html with createTweetElement for each tweet in the database that hasn't been added already
   const renderTweets = function(arrayOfTweets) {
     for (let tweet of arrayOfTweets) {
-      $('.tweet-list').append(createTweetElement(tweet));
+      if (!rendered.includes(tweet.user.handle)) {
+        $('.tweet-list').prepend(createTweetElement(tweet));
+        rendered.push(tweet.user.handle);
+      }
     }
+    loadTweets();
   };
 
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd" },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
+  //requests tweets from the database using AJAX and adds them to the page with renderTweets
+  const loadTweets = function() {
+    $.ajax('/tweets').then(data => renderTweets(data));
+  };
+  loadTweets();
+
+  //creates custom error messages when something has gone wrong in the tweet submission
+  const createErrorMessage = function(error) {
+    let $errorDiv = $('<div>').addClass('error');
+    let $iconDiv = $('<div>').addClass('red');
+    $iconDiv.append('<i class="fa-solid fa-circle-exclamation"></i>');
+    $errorDiv.append(error, $iconDiv);
+    $('#submit-error').append($errorDiv);
+  };
+
+  // adds a tweet to the database if no errors and immediately adds it to the page via loadTweets.
+  $('.tweet-form').submit(function(event) {
+    event.preventDefault();
+    if ($('#tweet-text').val().length === 0) {
+      $('.error').remove();
+      createErrorMessage('Tweet must not be empty!');
+      return;
     }
-  ];
+    if ($('#tweet-text').val().length > 140) {
+      $('.error').remove();
+      createErrorMessage('Tweet must be 140 characters or less!');
+      return;
+    }
+    $.ajax({
+      type: 'POST',
+      url: '/tweets',
+      data: $(this).serialize(),
+    });
+    $('.error').remove();
+    loadTweets();
 
-  // const $tweet = createTweetElement(tweetData);
-  // // console.log($tweet); // to see what it looks like
-  // $('.tweet-list').append($tweet);
-  renderTweets(data);
+  });
+  
+  // reveals the tweet submission form when a user clicks the write tweet button in the nav
+  $('.write').on('click', () => {
+    $('.new-tweet').toggleClass('show');
+  });
 
+  // reveals the "go to top" button when the user scrolls down
+  // $('document').scroll(() => console.log('yes'));
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 200) {
+      document.querySelector('.to-top').classList.add('show-to-top')
+    } else {
+      document.querySelector('.to-top').classList.remove('show-to-top');
+    }
+  });
+
+  // sends user to the top of the page and focuses on the textarea for tweet form when "go to top" button is clicked
+  $('.to-top').on('click', () => {
+    $('.new-tweet').addClass('show');
+    window.scrollTo(0, 0);
+    $('#tweet-text').focus();
+  });
 });
