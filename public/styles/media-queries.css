@@ -7,6 +7,9 @@
     width: 50%;
     align-self: flex-start;
   }
+  .tweet-list {
+    width: 50%;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -22,9 +25,13 @@
   }
   .container {
     flex-direction: column;
+    width: 60%;
   }
   .new-tweet {
     width: 90%;
     align-self: center;
+  }
+  .tweet-list {
+    width: 95%;
   }
 }

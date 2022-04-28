@@ -29,6 +29,7 @@
 
 .existing-tweet main {
   padding: 35px 20px 25px;
+  overflow-wrap: break-word;
 }
 
 .existing-tweet footer {
