@@ -79,6 +79,7 @@ $(document).ready(function() {
     });
     $('.error').remove();
     loadTweets();
+    $('#tweet-text').val('');
 
   });
   
@@ -88,12 +89,11 @@ $(document).ready(function() {
   });
 
   // reveals the "go to top" button when the user scrolls down
-  // $('document').scroll(() => console.log('yes'));
-  window.addEventListener('scroll', () => {
+  $(document).scroll(() => {
     if (window.pageYOffset > 200) {
-      document.querySelector('.to-top').classList.add('show-to-top')
+      $('.to-top').addClass('show-to-top');
     } else {
-      document.querySelector('.to-top').classList.remove('show-to-top');
+      $('.to-top').removeClass('show-to-top');
     }
   });
 

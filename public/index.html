@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/styles/nav.css" type="text/css">
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css">
     <link rel="stylesheet" href="/styles/tweet-list.css" type="text/css">
+    <link rel="stylesheet" href="/styles/media-queries.css" type="text/css">
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -36,34 +37,37 @@
       </div>
     </nav>
 
-    <header class="main-header">
-      <div>
-          <img src="/images/profile-hex.png"> 
-      </div>
-      <br>
-      <div>
-          <h2>Nathan Lunn</h2>
-      </div>
-    </header>
+    <section class="desktop">
+      <header class="main-header">
+        <div>
+            <img src="/images/profile-hex.png"> 
+        </div>
+        <br>
+        <div>
+            <h2>Nathan Lunn</h2>
+        </div>
+      </header>
 
-    <!-- Page-specific (main) content here -->
-    <main class="container">
-      <section class="new-tweet">
-        <h2>Compose Tweet</h2>
-        <form action="/tweets" method="POST" class="tweet-form">
-          <label for="tweet-text">What are you humming about?</label>
-          <div id="submit-error"></div>
-          <textarea name="text" id="tweet-text"></textarea>
-          <div class="submit-and-count">
-            <button type="submit">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
-          </div>
-        </form>
-      </section>
-      <section class="tweet-list">
-      </section>
-    </main>
+      <!-- Page-specific (main) content here -->
+      <main class="container">
+        <section class="new-tweet">
+          <h2>Compose Tweet</h2>
+          <form action="/tweets" method="POST" class="tweet-form">
+            <label for="tweet-text">What are you humming about?</label>
+            <div id="submit-error"></div>
+            <textarea type="submit" name="text" id="tweet-text"></textarea>
+            <div class="submit-and-count">
+              <button type="submit">Tweet</button>
+              <output name="counter" class="counter" for="tweet-text">140</output>
+            </div>
+          </form>
+        </section>
+        
+        <section class="tweet-list">
+        </section>
+      </main>
+    </section>
 
-    <div class="to-top"><i class="fa-solid fa-circle-arrow-up"></i></div>
+    <div class="to-top"><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Femojis.wiki%2Femoji-pics%2Fmessenger%2Ftop-arrow-messenger.png&f=1&nofb=1" alt=""></div>
   </body>
 </html>

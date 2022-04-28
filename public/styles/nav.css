@@ -21,7 +21,7 @@ nav {
   background-color: #A4B4EA;
   background-image: url("https://www.transparenttextures.com/patterns/blizzard.png");;
   color: white;
-  padding: 25px 1.5em 0px;
+  padding: 0.5em 0.5em 0px;
   display: flex;
   justify-content: space-between;
 } 
