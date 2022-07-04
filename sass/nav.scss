@@ -1,3 +1,4 @@
+@import "variables";
 /* animation for write new tweet icon */
 @keyframes up-down {
   0% {
@@ -18,7 +19,7 @@ nav {
   top: 0;
   width: 100%;
   height: 100px;
-  background-color: #A4B4EA;
+  background-color: $primary-color;
   background-image: url("https://www.transparenttextures.com/patterns/blizzard.png");;
   color: white;
   padding: 0.5em 0.5em 0px;
