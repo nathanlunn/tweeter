@@ -1,0 +1,65 @@
+.tweet-list {
+  width: 95%;
+  align-self: center;
+}
+
+/* each tweet(article) */
+.existing-tweet {
+  border: 3px solid;
+  padding: 10px;
+  margin: 20px;
+}
+
+.existing-tweet header {
+  display: flex;
+  justify-content: space-between;
+}
+.existing-tweet header div {
+  display: flex;
+  align-items: center;
+}
+.existing-tweet header img {
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+}
+.user-handle {
+  color: #A4B4EA;
+}
+
+.existing-tweet main {
+  padding: 35px 20px 25px;
+  overflow-wrap: break-word;
+}
+
+.existing-tweet footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 3px solid;
+  padding: 3px;
+  height: 1.5em;
+}
+/* share icons */
+.existing-tweet a {
+  color: #4056A1;
+  font-size: 0.7rem; 
+}
+.share-icons {
+  display: flex;
+  justify-content: space-around;
+  width: 4em;
+  padding: 2px;
+}
+.timestamp {
+  display: flex;
+  align-items: center;
+  font-size: .6em;
+}
+
+.existing-tweet a:hover {
+  color: #8c8100;
+}
+.existing-tweet:hover {
+  box-shadow: 5px 5px #A4B4EA;
+}
+

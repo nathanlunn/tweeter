@@ -1,0 +1,37 @@
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    padding: 10px;
+  }
+  .new-tweet {
+    width: 50%;
+    align-self: flex-start;
+  }
+  .tweet-list {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .desktop {
+    display: flex;
+  }
+  
+  .main-header {
+    box-sizing: border-box;
+    width: 40%;
+    height: 400px;
+    margin: 90px 0px 0px 30px;
+  }
+  .container {
+    flex-direction: column;
+    width: 60%;
+  }
+  .new-tweet {
+    width: 90%;
+    align-self: center;
+  }
+  .tweet-list {
+    width: 95%;
+  }
+}
