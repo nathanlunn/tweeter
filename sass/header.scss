@@ -1,5 +1,7 @@
+@import "variables";
+
 .main-header {
-  background-color: #A4B4EA;
+  background-color: $primary-color;
   background-image: url("https://www.transparenttextures.com/patterns/blizzard.png");
   display: flex;
   flex-direction: column;

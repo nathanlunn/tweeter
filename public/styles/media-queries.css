@@ -11,12 +11,10 @@
     width: 50%;
   }
 }
-
 @media (min-width: 1024px) {
   .desktop {
     display: flex;
   }
-  
   .main-header {
     box-sizing: border-box;
     width: 40%;
