@@ -22,20 +22,18 @@ nav {
   display: flex;
   justify-content: space-between;
 }
-
-/* logo */
 nav span {
   font-family: "Bungee", sans-serif;
   font-size: 2em;
   align-self: flex-end;
 }
-
-/* right side of nav, add new tweet "button" */
 nav i {
   color: red;
   animation: up-down 2s ease infinite;
 }
 
+/* logo */
+/* right side of nav, add new tweet "button" */
 .write {
   text-align: center;
 }
